@@ -2,7 +2,7 @@ const Bid = require('../models/Bid');
 const Gig = require('../models/Gig');
 
 // Create bid
-exports.createBid = async (req, res) => {
+const createBid = async (req, res) => {
   try {
     const { gigId, proposalText, bidAmount, deliveryTime, milestones } = req.body;
 
@@ -61,7 +61,7 @@ exports.createBid = async (req, res) => {
 };
 
 // Get bids for a gig
-exports.getGigBids = async (req, res) => {
+const getGigBids = async (req, res) => {
   try {
     const gig = await Gig.findById(req.params.gigId);
     
@@ -99,7 +99,7 @@ exports.getGigBids = async (req, res) => {
 };
 
 // Get my bids
-exports.getMyBids = async (req, res) => {
+const getMyBids = async (req, res) => {
   try {
     const bids = await Bid.find({ freelancerId: req.user._id })
       .populate('gigId', 'title description budget budgetType deadline status')
@@ -122,7 +122,7 @@ exports.getMyBids = async (req, res) => {
 };
 
 // Update bid
-exports.updateBid = async (req, res) => {
+const updateBid = async (req, res) => {
   try {
     const bid = await Bid.findById(req.params.id);
 
@@ -168,7 +168,7 @@ exports.updateBid = async (req, res) => {
 };
 
 // Accept bid
-exports.acceptBid = async (req, res) => {
+const acceptBid = async (req, res) => {
   try {
     const bid = await Bid.findById(req.params.id);
 
@@ -217,7 +217,7 @@ exports.acceptBid = async (req, res) => {
 };
 
 // Reject bid
-exports.rejectBid = async (req, res) => {
+const rejectBid = async (req, res) => {
   try {
     const bid = await Bid.findById(req.params.id);
 

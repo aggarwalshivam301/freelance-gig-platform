@@ -19,7 +19,7 @@ npm run dev
 
 ### 1. Register a Client
 ```bash
-curl -X POST http://localhost:5000/api/auth/register \
+curl -X POST https://fictional-space-doodle-x5v59xqwr96gcpgqw-5000.app.github.dev/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "email": "client@test.com",
@@ -31,7 +31,7 @@ curl -X POST http://localhost:5000/api/auth/register \
 
 ### 2. Register a Freelancer
 ```bash
-curl -X POST http://localhost:5000/api/auth/register \
+curl -X POST https://fictional-space-doodle-x5v59xqwr96gcpgqw-5000.app.github.dev/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "email": "freelancer@test.com",
@@ -43,7 +43,7 @@ curl -X POST http://localhost:5000/api/auth/register \
 
 ### 3. Login as Client
 ```bash
-curl -X POST http://localhost:5000/api/auth/login \
+curl -X POST https://fictional-space-doodle-x5v59xqwr96gcpgqw-5000.app.github.dev/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "client@test.com",
@@ -55,7 +55,7 @@ Save the token from response!
 
 ### 4. Create a Gig (use token from login)
 ```bash
-curl -X POST http://localhost:5000/api/gigs \
+curl -X POST https://fictional-space-doodle-x5v59xqwr96gcpgqw-5000.app.github.dev/api/gigs \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -d '{
@@ -71,7 +71,7 @@ curl -X POST http://localhost:5000/api/gigs \
 
 ### 5. View All Gigs (no auth needed)
 ```bash
-curl http://localhost:5000/api/gigs
+curl https://fictional-space-doodle-x5v59xqwr96gcpgqw-5000.app.github.dev/api/gigs
 ```
 
 The backend works perfectly! Frontend coming shortly...

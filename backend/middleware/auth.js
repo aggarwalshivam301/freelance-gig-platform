@@ -10,7 +10,15 @@ const protect = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
 
       // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret-key-change-in-production');
+      const secret = process.env.JWT_SECRET;
+      if (!secret) {
+        return res.status(503).json({
+          success: false,
+          message: 'Authentication service is not configured'
+        });
+      }
+
+      const decoded = jwt.verify(token, secret);
 
       // Get user from token
       req.user = await User.findById(decoded.id).select('-password');

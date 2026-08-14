@@ -3,9 +3,12 @@ const jwt = require('jsonwebtoken');
 
 // Generate JWT token
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET || 'fallback-secret-key-change-in-production', {
-    expiresIn: '30d'
-  });
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error('JWT_SECRET is not configured');
+  }
+
+  return jwt.sign({ id }, secret, { expiresIn: '30d' });
 };
 
 // @desc    Register new user
